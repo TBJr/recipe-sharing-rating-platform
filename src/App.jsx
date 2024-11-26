@@ -8,8 +8,7 @@ import Login from "./components/Login.jsx";
 import Profile from "./components/Profile.jsx";
 import Footer from "./components/Footer.jsx";
 import "react-toastify/dist/ReactToastify.css";
-// import "./App.css";
-import "./index.css";
+import "./App.css";
 
 function App() {
     const [user, setUser] = useState(null);
@@ -24,9 +23,6 @@ function App() {
 
     return (
         <Router>
-            <div className="bg-blue-500 text-white p-8 rounded">
-                <h1 className="text-3xl font-bold">TailwindCSS is working!</h1>
-            </div>
             {/*<Header />*/}
             <main className="max-w-4xl mx-auto mt-8">
                 <Routes>
@@ -44,7 +40,7 @@ function App() {
                     )}
                 </Routes>
             </main>
-            <Footer/>
+            {/*<Footer/>*/}
         </Router>
     );
 }
