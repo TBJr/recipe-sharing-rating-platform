@@ -3,13 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA24AWO7RSDkplmElecy_PssILaR8lzjf8",
-    authDomain: "recipe-sharing-rating-platform.firebaseapp.com",
-    projectId: "recipe-sharing-rating-platform",
-    storageBucket: "recipe-sharing-rating-platform.firebasestorage.app",
-    messagingSenderId: "543318487088",
-    appId: "1:543318487088:web:60e50b490a19099391bdf5",
-    measurementId: "G-X9TK7ZT77W"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: "recipe-sharing-and-rating.firebaseapp.com",
+    projectId: "recipe-sharing-and-rating",
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
