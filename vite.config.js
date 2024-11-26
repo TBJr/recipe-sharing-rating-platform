@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   css: {
     postcss: './postcss.config.js',
-    base: '/recipe-sharing-rating-platform/',
   },
+  base: '/recipe-sharing-rating-platform/',
 });
