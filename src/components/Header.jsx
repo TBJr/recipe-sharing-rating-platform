@@ -21,17 +21,31 @@ import {
     // SquaresPlusIcon,
     XMarkIcon,
 } from "@heroicons/react/24/outline";
+import {auth} from "../firebaseConfig.js";
+import { signOut } from "firebase/auth";
+import {useNavigate} from "react-router-dom";
+import { toast } from "react-toastify";
 // import { ChevronDownIcon, PhoneIcon, PlayCircleIcon, RectangleGroupIcon } from '@heroicons/react/20/solid'
 
 export default function Header() {
+    const navigate = useNavigate();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const navItems = [
         { name: "Home", href: "/" },
         { name: "Features", href: "/features" },
-        { name: "Recipes", href: "/recipes" },
+        { name: "Submit Recipe", href: "/submit-recipe" }, // Updated menu item
         { name: "Contact", href: "/contact" },
     ];
+
+    const handleLogout = () => {
+        signOut(auth)
+            .then(() => {
+                toast.success("Logged Out Successfully!");
+                navigate("/login");
+            })
+            .catch((error) => toast.error(error.message));
+    };
 
     return (
         <header className="relative isolate z-10 bg-white">
@@ -73,11 +87,14 @@ export default function Header() {
                     ))}
                 </PopoverGroup>
 
-                {/* Login Link */}
+                {/* Logout Link */}
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Link to="/login" className="text-sm font-semibold text-gray-900">
-                        Log in <span aria-hidden="true">&rarr;</span>
-                    </Link>
+                    <button
+                        onClick={handleLogout}
+                        className="text-sm font-semibold text-gray-900"
+                    >
+                        Logout <span aria-hidden="true">&rarr;</span>
+                    </button>
                 </div>
             </nav>
 
@@ -117,12 +134,12 @@ export default function Header() {
                                 ))}
                             </div>
                             <div className="py-6">
-                                <Link
-                                    to="/login"
+                                <button
+                                    onClick={handleLogout}
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-gray-900 hover:bg-gray-50"
                                 >
-                                    Log in
-                                </Link>
+                                    Logout
+                                </button>
                             </div>
                         </div>
                     </div>
